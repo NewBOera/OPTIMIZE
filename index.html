@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <!-- ! Tailwind config -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+         tailwind.config = {
+            theme: {
+               extend: {
+                  colors: {},
+                  fontFamily: {
+                     Montserrat: ["Montserrat", "sans-serif"],
+                  },
+               },
+            },
+         };
+      </script>
+      <script defer src="./scripts/main.js"></script>
+      <script defer src="./scripts/form-secure.js"></script>
+      <script defer src="./scripts/notify.js"></script>
+      <script defer src="./scripts/navbar.js"></script>
+      <script defer src="./scripts/dynamic-domain.js"></script>
+      <script defer src="./scripts/modals.js"></script>
+      <script defer src="scripts/form_logic.js"></script>
+      <script defer src="scripts/flag.js"></script>
+      <script defer src="scripts/navigation.js"></script>
+      <script defer src="scripts/analize.js"></script>
+
+      <link rel="stylesheet" href="styles/notify.css" />
+      <link rel="stylesheet" href="styles/globals.css" />
+      <link rel="stylesheet" href="./styles/navbar.css" />
+      <link rel="stylesheet" href="styles/flag.css" />
+
+      <!-- ? Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+         rel="stylesheet"
+      />
+
+      <style>
+         .custom-sh {
+            -webkit-box-shadow: 2px 5px 17px 3px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 2px 5px 17px 3px rgba(0, 0, 0, 0.75);
+            box-shadow: 2px 5px 17px 3px rgba(0, 0, 0, 0.75);
+         }
+
+         .roller {
+            height: 4.125rem;
+            line-height: 4rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1d3557;
+         }
+
+         #spare-time {
+            font-size: 1rem;
+            font-style: italic;
+            letter-spacing: 1rem;
+            margin-top: 0;
+            color: #a8dadc;
+         }
+
+         .roller #rolltext {
+            position: absolute;
+            top: 0;
+            animation: slide 5s infinite;
+         }
+
+         @keyframes slide {
+            0% {
+               top: 0;
+            }
+            25% {
+               top: -4rem;
+            }
+            50% {
+               top: -8rem;
+            }
+            72.5% {
+               top: -12.25rem;
+            }
+         }
+
+         @media screen and (max-width: 600px) {
+            h1 {
+               text-align: center;
+               text-transform: uppercase;
+
+               font-size: 2.125rem;
+            }
+
+            .roller {
+               height: 2.6rem;
+               line-height: 2.125rem;
+            }
+
+            #spare-time {
+               font-size: 1rem;
+               letter-spacing: 0.1rem;
+            }
+
+            .roller #rolltext {
+               animation: slide-mob 5s infinite;
+            }
+
+            @keyframes slide-mob {
+               0% {
+                  top: 0;
+               }
+               25% {
+                  top: -2.125rem;
+               }
+               50% {
+                  top: -4.25rem;
+               }
+               72.5% {
+                  top: -6.375rem;
+               }
+            }
+         }
+      </style>
+   </head>
+   <body>
+      <main
+         class="py-8 px-4 font-Montserrat [&>section]:mb-10 lg:[&>section]:mb-20"
+      >
+         <section
+            id="home-section"
+            class="flex flex-col items-center tab-content"
+         >
+            <!-- ? Hero section -->
+            <article id="home-section" class="flex justify-center">
+               <div
+                  class="flex flex-col items-center sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1280px] text-center gap-4"
+               >
+                  <!-- ? lg hidden section -->
+                  <div
+                     class="flex flex-col items-center justify-center gap-3 md:flex-row lg:hidden"
+                  >
+                     <img src="images/Group 6.png" class="w-[100px]" alt="" />
+                     <h2 class="font-bold text-xl md:text-3xl">
+                        <span class="dyn-name"></span>
+                     </h2>
+                  </div>
+
+                  <!-- ? Hero section -->
+                  <div class="flex justify-center gap-3">
+                     <div class="hidden lg:flex justify-center items-center">
+                        <img
+                           src="images/Group 6.png"
+                           class="w-[150px] lg:shrink-0 lg:w-[150px]"
+                           alt=""
+                        />
+                     </div>
+
+                     <h1
+                        class="text-2xl md:text-4xl/[36px] md:w-[80%] md:text-left lg:text-5xl lg:w-[60%]"
+                     >
+                        EN UN SOLO CLICK DESCUBRE CÓMO
+                        <div
+                           class="roller inline-block bg-red-400 h-[50px] w-[200px]"
+                        >
+                           <span id="rolltext">
+                              ATRAER MAS CLIENTES<br />
+                              VENDER MÁS<br />
+                              GANAR MÁS DINERO<br />
+                              TENER MÁS CONTACTO<br />
+                           </span>
+                        </div>
+                        CON TU SITIO WEB
+                     </h1>
+                  </div>
+
+                  <div class="w-full">
+                     <form
+                        action=""
+                        class="flex flex-col items-center gap-3 lg:flex-row lg:gap-0"
+                     >
+                        <input
+                           type="text"
+                           id="url"
+                           class="border rounded-full shadow-inner w-full text-center p-1 placeholder:text-[#C5C5C5] placeholder:text-lg md:p-3 md:placeholder:text-3xl md:w-[80%] lg:rounded-none lg:rounded-l-full"
+                           placeholder="pega el URL de tu sitio web"
+                        />
+                        <button
+                           class="bg-[#405DF8] text-white font-semibold text-xl p-2 rounded-full w-[80%] md:w-[60%] md:text-3xl lg:rounded-none lg:rounded-r-full"
+                        >
+                           COMENZAR GRATIS
+                        </button>
+                     </form>
+                  </div>
+                  <div
+                     class="flex flex-col items-center bg-blue-200 w-full gap-4"
+                  >
+                     <video
+                        width="auto"
+                        height="auto"
+                        autoplay
+                        loop
+                        muted
+                        class="border-none"
+                     >
+                        <source
+                           src="videos/-17fd-4a9a-96e5-e25ae8110fcb.mp4"
+                           type="video/mp4"
+                        />
+                        Tu navegador no soporta la etiqueta de video.
+                     </video>
+                  </div>
+               </div>
+            </article>
+
+            <!--?CON UN SOLO CLICK-->
+            <article id="justone-section" class="flex flex-col items-center">
+               <div
+                  class="flex flex-col items-center gap-4 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1300px] lg:flex-row lg:gap-10"
+               >
+                  <div class="hidden lg:flex w-[40%] self-stretch bg-red-500">
+                     <img
+                        src="images/43b26a0430ba48267dd13bb0a0d5a64c.png"
+                        class="object-cover w-full"
+                        alt=""
+                     />
+                  </div>
+
+                  <div class="flex flex-col items-center gap-4 lg:w-[60%]">
+                     <h1
+                        class="text-2xl md:text-4xl/[36px] md:w-full md:text-left lg:text-5xl lg:w-full"
+                     >
+                        CON UN SOLO CLICK DESCUBRE CÓMO CAMBIAR EL CURSO DE TU
+                        NEGOCIO
+                     </h1>
+                     <img
+                        src="images/43b26a0430ba48267dd13bb0a0d5a64c.png"
+                        class="md:h-[240px] md:w-full md:object-cover lg:hidden"
+                        alt=""
+                     />
+
+                     <p class="">
+                        Tienes un sitio web pero hasta el día de hoy no has
+                        visto ningún cambio en tu marca/negocio, gastaste miles
+                        de pesos en el mejor diseño incluso tal vez las mejores
+                        funciones disponibles pero aún no has visto progreso
+                        para tu marca/negocio. Imagina que pudieses ver
+                        exactamente lo que está pasando en la mente de tus
+                        clientes/usuarios cada que visitan tu sitio web y
+                        pudieras modificar sin rodeos aquello que te va a traer
+                        más clientes, más ventas, más negocios más ganancias y
+                        más dinero, ahora esto es posible gracias a nuestro
+                        auditor de sitios webs grátis , con solo 2 clicks podrás
+                        tomar mejores decisiones para los objetivos que quieres
+                        de tu marca/negocio.
+                     </p>
+                     <button
+                        class="bg-[#405DF8] text-white font-semibold text-xl p-2 rounded-full w-full md:w-[60%] md:text-3xl lg:w-[100%]"
+                     >
+                        AUDITAR MI SITIO GRATIS
+                     </button>
+                  </div>
+               </div>
+            </article>
+            <!--?ELLOS REALIZARON-->
+            <article id="home-section" class="flex flex-col items-center">
+               <div
+                  class="flex flex-col items-center gap-5 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1300px] lg:gap-14"
+               >
+                  <div
+                     class="flex flex-col items-center gap-4 md:w-[80%] lg:w-[100%] lg:gap-9"
+                  >
+                     <h2
+                        class="font-bold text-2xl text-center md:text-4xl md:font-semibold lg:text-[40px]"
+                     >
+                        ELLOS REALIZARON CAMBIOS GRACIAS A NUESTRO AUDITOR
+                     </h2>
+
+                     <article
+                        class="w-[150px] flex flex-col items-center gap-12 md:w-full md:flex-row md:flex-wrap md:[&>img]:w-[25%] md:justify-center lg:[&>img]:w-[15%] lg:justify-between"
+                     >
+                        <img src="images/Group 9.png" alt="" />
+                        <img src="images/Group 10.png" alt="" />
+                        <img src="images/Group 11.png" alt="" />
+                        <img src="images/Group 12.png" alt="" />
+                        <img src="images/Group 13.png" alt="" />
+                     </article>
+                  </div>
+                  <div class="flex flex-col gap-5 items-center">
+                     <p
+                        class="font-light italic lg:text-3xl lg:font-extralight"
+                     >
+                        “Si tu tasa de conversión es más baja de lo que te
+                        gustaría —quizás está por debajo de la media de tu
+                        sector, o es inferior a la de tus principales
+                        competidores, o simplemente está por debajo de tus
+                        propios objetivos—, es hora de optimizarla.”
+                     </p>
+                     <hr class="h-1 w-[80%] md:w-full bg-[#D9D9D9]" />
+                     <img
+                        src="images/hubspotlogo 1.png"
+                        class="md:self-end md:w-[150px]"
+                        alt=""
+                     />
+                  </div>
+               </div>
+            </article>
+         </section>
+
+         <section
+            id="analize-section"
+            class="flex flex-col items-center tab-content hidden"
+         >
+            <!--?HERO PAG 2 REALIZARON-->
+
+            <article id="home-second" class="flex flex-col items-center">
+               <div
+                  class="flex flex-col items-center gap-5 md:gap-5 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1300px] lg:gap-14"
+               >
+                  <div
+                     class="flex flex-col items-center md:flex-row md:gap-5 lg:hidden"
+                  >
+                     <img src="images/Group 6.png" class="w-[100px]" alt="" />
+                     <h2 class="font-bold text-xl md:text-3xl">
+                        <span class="dyn-name"></span>
+                     </h2>
+                  </div>
+
+                  <div
+                     class="bg-yellow-300 lg:w-[100%] flex flex-col items-center"
+                  >
+                     <h2
+                        class="font-bold text-lg md:text-3xl max-w-[300px] md:max-w-[90%] lg:max-w-full text-center text-blue-600 truncate bg-red-400 px-10"
+                     >
+                        WWW.URLMFHUEJIOHF
+                     </h2>
+                     <h2 class="hidden lg:block uppercase text-4xl text-center">
+                        sigue estas recomendaciones si quieres
+                        <span class="font-bold">más clientes</span>
+                     </h2>
+                  </div>
+
+                  <div
+                     class="w-full flex flex-col items-center lg:flex-row gap-5 lg:gap-4"
+                  >
+                     <div class="lg:w-[70%] self-stretch bg-orange-500">
+                        <iframe
+                           id="preview"
+                           class="bg-black h-full w-full"
+                           src=""
+                           frameborder="0"
+                        ></iframe>
+                     </div>
+
+                     <div
+                        class="flex flex-col items-center gap-5 md:gap-0 bg-slate-500"
+                     >
+                        <div class="flex w-[90%] gap-2 md:justify-center">
+                           <h3 class="text-sm text-[#ACACAC]">Powered by</h3>
+                           <img
+                              src="images/limit.png"
+                              class="w-[25px]"
+                              alt=""
+                           />
+                           <h3 class="text-sm">PageSpeed Insights</h3>
+                        </div>
+
+                        <div
+                           class="flex flex-col items-center shadow-xl border p-4"
+                        >
+                           <h2 class="text-xl font-medium">Desempeño de</h2>
+                           <h2
+                              class="font-bold text-sm md:text-3xl text-blue-600 truncate"
+                           >
+                              WWW.YOURWEBSITEURL.COM
+                           </h2>
+
+                           <div>
+                              <h3 class="text-base font-medium">
+                                 Experiencia para usuarios de Chrome:
+                              </h3>
+                              <ul>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Primer renderizado con
+                                          contenido</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Retraso de la primera
+                                          interacción</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                              </ul>
+                              <h2 class="text-xl font">Nuestros resultados</h2>
+                              <ul>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Índice de velocidad</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Tiempo hasta ser inactivo</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Primer renderizado
+                                          significativo</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Primer reposo de la CPU</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                                 <li>
+                                    <div class="flex justify-between gap-4">
+                                       <span class="text-sm font-medium"
+                                          >· Latencia de entrada estimada</span
+                                       >
+                                       <span class=""> &#x1F6C8;</span>
+                                    </div>
+                                    <span class="text-xl text-blue-600"
+                                       >[AQUI VA EL RESULTADO]</span
+                                    >
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </article>
+
+            <!--?DESEMPEÑO PAG 2 REALIZARON-->
+
+            <article
+               id="home-section"
+               class="flex flex-col items-center bg-green-600"
+            >
+               <div
+                  class="flex flex-col text-center border items-center gap-5 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1300px] lg:gap-14"
+               >
+                  <div class="flex flex-col items-center w-[70%]">
+                     <h2 class="text-lg font-semibold md:text-3xl">
+                        SIGUE ESTAS RECOMENDACIONES SI QUIERES
+                        <span class="font-bold text-blue-500"
+                           >MÁS CLIENTES</span
+                        >
+                     </h2>
+                  </div>
+
+                  <div
+                     class="shadow-xl flex flex-col items-center md:w-full bg-orange-500"
+                  >
+                     <div
+                        class="flex flex-col items-center bg-pink-400 md:w-full"
+                     >
+                        <div
+                           class="flex flex-col md:items-center md:flex-row md:gap-2 md:justify-center md:w-[80%]"
+                        >
+                           <h2 class="text-lg font-semibold md:text-2xl">
+                              HAZ ESTO PARA MEJORAR
+                           </h2>
+                           <h2 class="text-lg font-bold text-blue-500">
+                              <span class="dyn-domain"></span>
+                           </h2>
+                        </div>
+
+                        <p class="w-[60%] md:w-[80%] md:text-xl bg-red-50">
+                           Estas a un paso de obtener más y mejores resultados
+                        </p>
+                     </div>
+
+                     <div class="relative w-full max-w-md md:max-w-[80%] mt-4">
+                        <div class="bg-orange-300 blur-sm p-10 text-sm">
+                           <ul class="list-inside list-disc text-justify">
+                              <li>Usa imágenes más pequeñas y optimizadas</li>
+                              <li>
+                                 Evita usar muchos efectos visuales complejos
+                              </li>
+                              <li>
+                                 Reduce la cantidad de herramientas y
+                                 complementos
+                              </li>
+                              <li>
+                                 Comprime tus archivos de diseño y programación
+                              </li>
+                              <li>
+                                 Asegúrate de tener un buen servicio de
+                                 alojamiento web
+                              </li>
+                              <li>Evita redirigir demasiado a los usuarios</li>
+                              <li>
+                                 Configura tu sitio para cargar primero lo más
+                                 importante
+                              </li>
+                              <li>
+                                 Haz que las imágenes y videos se carguen de
+                                 manera selectiva
+                              </li>
+                              <li>Elige fuentes que se carguen rápidamente</li>
+                           </ul>
+                        </div>
+                        <button
+                           class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#405DF8] text-white font-semibold text-xl p-2 rounded-full w-[90%] md:text-3xl"
+                        >
+                           DESBLOQUEAR
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </article>
+         </section>
+      </main>
+
+      <footer class="bg-[#405DF8] flex flex-col items-center font-Montserrat">
+         <div
+            class="flex flex-col items-center gap-5 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1280px] p-5"
+         >
+            <div class="flex items-center gap-3">
+               <img
+                  src="images/Group 5.png"
+                  class="w-[40px] md:w-[70 px]"
+                  alt="logo"
+               />
+               <span class="dyn-name font-bold text-2xl text-white"></span>
+            </div>
+
+            <div
+               class="flex flex-col items-center text-sm text-center md:text-left md:text-base text-white w-[80%] lg:w-full gap-5"
+            >
+               <p>
+                  La información y las recomendaciones proporcionadas en este
+                  sitio web tienen el propósito de ofrecer un reporte destinado
+                  a mejorar el rendimiento de su sitio web. Se proporcionan una
+                  cantidad limitada de recomendaciones sin costo alguno, y
+                  recomendaciones adicionales están disponibles mediante pago.
+               </p>
+               <p>
+                  Aunque nos comprometemos a ofrecer información precisa y útil,
+                  no garantizamos que la implementación de las recomendaciones
+                  contenidas en el reporte resulte en mejoras específicas en la
+                  velocidad o el rendimiento de su sitio web. Los resultados
+                  pueden estar sujetos a variaciones debido a factores fuera de
+                  nuestro control, tales como configuraciones del servidor,
+                  ajustes del sitio web y otros elementos técnicos.
+               </p>
+               <p class="mb-4">
+                  En consecuencia, no asumimos responsabilidad alguna por
+                  cualquier daño o pérdida que pueda surgir como resultado de la
+                  aplicación de nuestras recomendaciones. Al utilizar este sitio
+                  web, usted acepta que nuestra responsabilidad se limita
+                  únicamente a la información y recomendaciones proporcionadas
+                  en el reporte, y que no ofrecemos garantías sobre resultados
+                  específicos.
+               </p>
+               <div
+                  class="text-white w-full text-center flex md:text-base flex-col gap-2 lg:flex-row md:justify-evenly"
+               >
+                  <span class="cursor-pointer">Términos y condiciones</span>
+                  <span class="cursor-pointer">Políticas de privacidad</span>
+                  <span class="cursor-pointer">Información de la compañia</span>
+               </div>
+            </div>
+         </div>
+      </footer>
+
+      <!-- ! Modals -->
+      <!-- ? Terms and Conditions Modal -->
+      <section
+         id="terms-modal"
+         class="bg-[#00000088] font-[Inter] flex items-center justify-center min-h-screen absolute z-50 hidden"
+      >
+         <div
+            class="fixed inset-0 w-full bg-[#00000088] flex items-center justify-center max-h-screen"
+         >
+            <div
+               class="bg-white shadow-lg w-11/12 sm:w-8/12 lg:max-w-[600px] h-auto max-h-54 rounded-md"
+            >
+               <div class="relative flex items-end">
+                  <img
+                     class="hover:cursor-pointer absolute top-0 right-0 w-7 m-4 rounded-xs"
+                     onclick="clickModal('terms-modal')"
+                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRUZFRkVGIiBkPSJNMTkgM0g1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMm0tMy40IDE0TDEyIDEzLjRMOC40IDE3TDcgMTUuNmwzLjYtMy42TDcgOC40TDguNCA3bDMuNiAzLjZMMTUuNiA3TDE3IDguNEwxMy40IDEybDMuNiAzLjZ6Ii8+PC9zdmc+"
+                     alt=""
+                  />
+                  <div class="bg-primarybg w-full">
+                     <h2
+                        class="text-base text-center p-4 font-bold text-white w-full"
+                     >
+                        Terms and Conditions
+                     </h2>
+                  </div>
+               </div>
+
+               <article
+                  class="overflow-y-auto overflow-x-hidden h-96 p-5 text-xs flex flex-col gap-4"
+               ></article>
+            </div>
+         </div>
+      </section>
+
+      <!-- ? Privacy Policy Modal -->
+      <section
+         id="privacy-modal"
+         class="bg-[#00000088] font-[Inter] flex items-center justify-center min-h-screen absolute z-50 hidden"
+      >
+         <div
+            class="fixed inset-0 w-full bg-[#00000088] flex items-center justify-center max-h-screen"
+         >
+            <div
+               class="bg-white shadow-lg w-11/12 sm:w-8/12 lg:max-w-[600px] h-auto max-h-54 rounded-md"
+            >
+               <div class="relative flex items-end">
+                  <img
+                     class="hover:cursor-pointer absolute top-0 right-0 w-7 m-4 rounded-xs"
+                     onclick="clickModal('privacy-modal')"
+                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRUZFRkVGIiBkPSJNMTkgM0g1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMm0tMy40IDE0TDEyIDEzLjRMOC40IDE3TDcgMTUuNmwzLjYtMy42TDcgOC40TDguNCA3bDMuNiAzLjZMMTUuNiA3TDE3IDguNEwxMy40IDEybDMuNiAzLjZ6Ii8+PC9zdmc+"
+                     alt=""
+                  />
+                  <div class="bg-primarybg w-full">
+                     <h2
+                        class="text-base text-center p-4 font-bold text-white w-full"
+                     >
+                        Privacy Policy
+                     </h2>
+                  </div>
+               </div>
+
+               <article
+                  class="overflow-y-auto overflow-x-hidden h-96 p-5 text-xs flex flex-col gap-4"
+               ></article>
+            </div>
+         </div>
+      </section>
+
+      <!-- ? Cookies Modal -->
+      <section
+         id="cookies-modal"
+         class="bg-[#00000088] font-[Inter] flex items-center justify-center min-h-screen absolute z-50 hidden"
+      >
+         <div
+            class="fixed inset-0 w-full bg-[#00000088] flex items-center justify-center max-h-screen"
+         >
+            <div
+               class="bg-white shadow-lg w-11/12 sm:w-8/12 lg:max-w-[600px] h-auto max-h-54 rounded-md"
+            >
+               <div class="relative flex items-end">
+                  <img
+                     class="hover:cursor-pointer absolute top-0 right-0 w-7 m-4 rounded-xs"
+                     onclick="clickModal('cookies-modal')"
+                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRUZFRkVGIiBkPSJNMTkgM0g1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMm0tMy40IDE0TDEyIDEzLjRMOC40IDE3TDcgMTUuNmwzLjYtMy42TDcgOC40TDguNCA3bDMuNiAzLjZMMTUuNiA3TDE3IDguNEwxMy40IDEybDMuNiAzLjZ6Ii8+PC9zdmc+"
+                     alt=""
+                  />
+                  <div class="bg-primarybg w-full">
+                     <h2
+                        class="text-base text-center p-4 font-bold text-white w-full"
+                     >
+                        Cookie Policy
+                     </h2>
+                  </div>
+               </div>
+
+               <article
+                  class="overflow-y-auto overflow-x-hidden h-96 p-5 text-xs flex flex-col gap-4"
+               ></article>
+            </div>
+         </div>
+      </section>
+
+      <!-- ? Contact Modal -->
+      <section
+         id="contact-modal"
+         class="bg-[#00000088] font-[Inter] flex items-center justify-center min-h-screen absolute z-50 hidden"
+      >
+         <div
+            class="fixed inset-0 w-full bg-[#00000088] flex items-center justify-center max-h-screen"
+         >
+            <div
+               class="bg-white shadow-lg w-11/12 sm:w-8/12 lg:max-w-[600px] h-auto max-h-54 rounded-md"
+            >
+               <div class="relative flex items-end">
+                  <img
+                     class="hover:cursor-pointer absolute top-0 right-0 w-7 m-4 rounded-xs"
+                     onclick="clickModal('contact-modal')"
+                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRUZFRkVGIiBkPSJNMTkgM0g1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMm0tMy40IDE0TDEyIDEzLjRMOC40IDE3TDcgMTUuNmwzLjYtMy42TDcgOC40TDguNCA3bDMuNiAzLjZMMTUuNiA3TDE3IDguNEwxMy40IDEybDMuNiAzLjZ6Ii8+PC9zdmc+"
+                     alt=""
+                  />
+                  <div class="bg-primarybg w-full">
+                     <h2
+                        class="text-base text-center p-4 font-bold text-white w-full"
+                     >
+                        Contact
+                     </h2>
+                  </div>
+               </div>
+
+               <article
+                  class="overflow-y-auto overflow-x-hidden h-96 p-5 text-xs flex flex-col gap-4"
+               ></article>
+            </div>
+         </div>
+      </section>
+   </body>
+</html>
