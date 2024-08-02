@@ -45,22 +45,14 @@ function validateForm(formulario) {
          isValid = false;
          input.classList.add("error");
          notify.warning("The phone number is not valid", 3000);
-      } else if (input.name === "https" && !isValidUrl(input.value)) {
-         isValid = false;
-         input.classList.add("error");
-         notify.warning(
-            'Introduce una página válida, Iniciando por "https://www."',
-            3000
-         );
       }
    });
-   console.log("todo en orden");
-   getInputValue();
-   return isValid;
-}
 
-function isValidUrl(input) {
-   return /^https:\/\//.test(input);
+   const $inputURL = document.getElementById("user-url"),
+      $userURL = $inputURL.value;
+
+   getInputValue($userURL);
+   return isValid;
 }
 
 function isValidEmail(email) {

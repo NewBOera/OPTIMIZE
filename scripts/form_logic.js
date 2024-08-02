@@ -1,6 +1,8 @@
-function sendSubscribeForm(idForm) {
-   const susbcribeForm = document.getElementById(idForm);
-   console.log(susbcribeForm);
+function validateLink(idForm) {
    const isValidEmail = validateForm(susbcribeForm);
+   if (isValidEmail) {
+      openTab(event, "analize-section");
+   }
+
    if (!isValidEmail) return;
 }

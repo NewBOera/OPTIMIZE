@@ -27,8 +27,10 @@
       <script defer src="scripts/form_logic.js"></script>
       <script defer src="scripts/flag.js"></script>
       <script defer src="scripts/navigation.js"></script>
-      <script defer src="scripts/analize.js"></script>
-      <script defer src="scripts/speed.js"></script>
+      <script defer src="scripts/API/analize.js"></script>
+      <script defer src="scripts/API/speedApiService.js"></script>
+      <script defer src="scripts/API/navigationController.js"></script>
+      <script defer src="scripts/API/payment.js"></script>
 
       <link rel="stylesheet" href="styles/notify.css" />
       <link rel="stylesheet" href="styles/globals.css" />
@@ -137,7 +139,7 @@
 
                   <div class="w-full">
                      <form
-                        id="initial-form"
+                        id="user-website"
                         action=""
                         class="flex flex-col items-center gap-3 lg:flex-row lg:gap-0"
                      >
@@ -149,7 +151,8 @@
                            placeholder="pega el URL de tu sitio web"
                         />
                         <button
-                           onclick="sendSubscribeForm('initial-form')"
+                           type="submit"
+                           onclick="analizeWebsite()"
                            class="bg-[#405DF8] text-white font-semibold text-xl p-2 rounded-full w-[80%] md:w-[60%] md:text-3xl lg:rounded-none lg:rounded-r-full"
                         >
                            COMENZAR GRATIS
@@ -221,11 +224,12 @@
                         tomar mejores decisiones para los objetivos que quieres
                         de tu marca/negocio.
                      </p>
-                     <button
-                        class="bg-[#405DF8] text-white font-semibold text-xl p-2 rounded-full w-full md:w-[60%] md:text-3xl lg:w-[100%]"
+                     <a
+                        href="#home-section"
+                        class="bg-[#405DF8] text-center text-white font-semibold text-xl p-2 rounded-2xl w-full md:w-[60%] md:text-3xl lg:w-[100%]"
                      >
                         AUDITAR MI SITIO GRATIS
-                     </button>
+                     </a>
                   </div>
                </div>
             </article>
@@ -277,7 +281,7 @@
          <!--?HERO PAG 2 REALIZARON-->
          <section
             id="analize-section"
-            class="flex flex-col items-center tab-content"
+            class="flex flex-col items-center tab-content hidden"
          >
             <article id="home-second" class="flex flex-col items-center mb-8">
                <div
@@ -337,8 +341,8 @@
                         >
                            <h2 class="text-xl font-medium">Desempeño de</h2>
                            <h2
-                              id="page-tested"
-                              class="font-bold text-lg md:text-3xl truncate sm:max-w-[550px] md:max-w-[400px] lg:max-w-[400px] text-blue-600 uppercase"
+                              id="user-url-title"
+                              class="font-bold text-lg md:text-3xl truncate sm:max-w-[550px] md:max-w-[300px] lg:max-w-[400px] text-blue-600 uppercase"
                            >
                               WWW.YOURWEBSITEURL.COM
                            </h2>
@@ -505,9 +509,90 @@
                               alt=""
                            />
                            <button
-                              class="bg-[#405DF8] text-white font-semibold text-sm p-2 rounded-full w-[50%] lg:w-[60%] md:text-3xl"
+                              id="unlock-btn"
+                              disabled
+                              onclick="nextPage()"
+                              class="text-white flex justify-center items-center px-8 bg-[#405DF8] font-semibold text-sm p-2 rounded-xl md:text-xl"
                            >
-                              DESBLOQUEAR
+                              <svg
+                                 id="loader"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 200 200"
+                                 width="50"
+                                 height="50"
+                                 class=""
+                              >
+                                 <radialGradient
+                                    id="a4"
+                                    cx=".66"
+                                    fx=".66"
+                                    cy=".3125"
+                                    fy=".3125"
+                                    gradientTransform="scale(1.5)"
+                                 >
+                                    <stop
+                                       offset="0"
+                                       stop-color="#FFFFFF"
+                                    ></stop>
+                                    <stop
+                                       offset=".3"
+                                       stop-color="#FFFFFF"
+                                       stop-opacity=".9"
+                                    ></stop>
+                                    <stop
+                                       offset=".6"
+                                       stop-color="#FFFFFF"
+                                       stop-opacity=".6"
+                                    ></stop>
+                                    <stop
+                                       offset=".8"
+                                       stop-color="#FFFFFF"
+                                       stop-opacity=".3"
+                                    ></stop>
+                                    <stop
+                                       offset="1"
+                                       stop-color="#FFFFFF"
+                                       stop-opacity="0"
+                                    ></stop>
+                                 </radialGradient>
+                                 <circle
+                                    transform-origin="center"
+                                    fill="none"
+                                    stroke="url(#a4)"
+                                    stroke-width="15"
+                                    stroke-linecap="round"
+                                    stroke-dasharray="200 1000"
+                                    stroke-dashoffset="0"
+                                    cx="100"
+                                    cy="100"
+                                    r="70"
+                                 >
+                                    <animateTransform
+                                       type="rotate"
+                                       attributeName="transform"
+                                       calcMode="spline"
+                                       dur="2"
+                                       values="360;0"
+                                       keyTimes="0;1"
+                                       keySplines="0 0 1 1"
+                                       repeatCount="indefinite"
+                                    ></animateTransform>
+                                 </circle>
+                                 <circle
+                                    transform-origin="center"
+                                    fill="none"
+                                    opacity=".2"
+                                    stroke="#FFFFFF"
+                                    stroke-width="15"
+                                    stroke-linecap="round"
+                                    cx="100"
+                                    cy="100"
+                                    r="70"
+                                 ></circle>
+                              </svg>
+                              <span id="unlock-text" class="hidden"
+                                 >DESBLOQUEAR
+                              </span>
                            </button>
                         </div>
                      </div>
@@ -519,7 +604,7 @@
          <!-- ? FORM SECTION -->
          <section id="form-section" class="flex justify-center hidden">
             <div
-               class="flex flex-col sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1280px] 2xl:w-[1400px]"
+               class="flex flex-col items-center sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1280px] 2xl:w-[1400px]"
             >
                <div
                   class="flex flex-col items-center justify-center gap-3 md:flex-row lg:hidden"
@@ -536,54 +621,66 @@
                   <!--?FORM PAYPAL-->
 
                   <div
-                     class="flex flex-col items-center w-full h-full lg:w-1/2"
+                     class="flex flex-col items-center justify-center w-full h-full lg:w-1/2"
                   >
-                     <div class="w-full">
-                        <form
-                           action=""
-                           class="flex flex-col gap-4 text-xl shadow-xl lg:shadow-none p-6 w-full lg:h-[40%] lg:gap-1 lg:text-sm"
-                        >
-                           <div class="flex flex-col lg:flex-row lg:mb-2">
-                              <h2 class="text-[#BABABA] text-xl lg:text-xl">
-                                 TU ORDEN/
-                              </h2>
-                              <h2 class="font-bold text-xl">
-                                 INFORMACIÓN DE PAGO
-                              </h2>
-                           </div>
+                     <form
+                        id="user-form"
+                        action=""
+                        class="h-max flex flex-col gap-8 text-xl shadow-xl lg:shadow-none p-6 w-full lg:text-sm"
+                     >
+                        <div class="flex flex-col lg:flex-row lg:mb-2">
+                           <h2 class="text-[#BABABA] text-2xl lg:text-xl">
+                              TU ORDEN/
+                           </h2>
+                           <h2 class="font-bold text-2xl">
+                              INFORMACIÓN DE PAGO
+                           </h2>
+                        </div>
 
+                        <div class="">
                            <label for="name">NOMBRE(S)</label>
                            <input
                               type="text"
                               name="name"
-                              class="border-b border-black"
+                              class="border-b w-full border-black"
                            />
+                        </div>
 
+                        <div>
                            <label for="last-name">APELLIDOS</label>
                            <input
                               type="text"
                               name="last-name"
-                              class="border-b border-black"
+                              class="border-b w-full border-black"
                            />
+                        </div>
 
+                        <div>
                            <label for="email">CORREO ELECTRÓNICO</label>
                            <input
                               type="email"
                               name="email"
-                              class="border-b border-black"
+                              class="border-b w-full border-black"
                            />
+                        </div>
+
+                        <div>
                            <label for="phone">TÉLEFONO</label>
                            <input
                               type="tel"
                               name="phone"
-                              class="border-b border-black"
+                              class="border-b w-full border-black"
                            />
-                        </form>
-                     </div>
-
-                     <div
-                        class="bg-slate-300 w-full h-[540px] lg:h-[60%]"
-                     ></div>
+                        </div>
+                        <div>
+                           <button
+                              class="bg-[#405DF8] px-8 text-white font-semibold text-lg p-2 rounded-xl"
+                              onclick="payment()"
+                           >
+                              PROCEDER AL PAGO
+                           </button>
+                        </div>
+                     </form>
                   </div>
 
                   <!--? TU ORDEN-->
@@ -609,8 +706,13 @@
                         <h2
                            class="uppercase text-base md:text-xl text-black w-[80%] md:w-full text-center md:text-left lg:text-xl"
                         >
-                           Informe completo de {sitio.web} para mejorar su
-                           desempeño incluye:
+                           Informe completo de
+                           <span
+                              id="user-span"
+                              class="font-bold text-2xl text-[#405DF8]"
+                              >{user.website}</span
+                           >
+                           para mejorar su desempeño incluye:
                         </h2>
                         <ul class="list-inside list-disc text-sm md:text-base">
                            <li>LISTA DE MEJORAS</li>
@@ -628,6 +730,26 @@
             </div>
          </section>
 
+         <!-- ? PAYMENT-->
+         <section id="payment-section" class="flex justify-center hidden">
+            <div
+               class="flex flex-col justify-center items-center sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1280px] 2xl:w-[1400px]"
+            >
+               <div
+                  class="bg-slate-300 flex shadow-xl justify-center items-center w-1/2 p-10"
+               >
+                  <script src="https://www.paypal.com/sdk/js?client-id=BAA-4GZLiNl270LCcGzzKz0enJmrzSqm5CJeCgfd9vZZhkYTqEpdqH5dRgPRrQnppl-_gY-xbBKqudtb8s&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+                  <div id="paypal-container-MYSULSPU7U8YW"></div>
+                  <script>
+                     paypal
+                        .HostedButtons({
+                           hostedButtonId: "MYSULSPU7U8YW",
+                        })
+                        .render("#paypal-container-MYSULSPU7U8YW");
+                  </script>
+               </div>
+            </div>
+         </section>
          <!-- ? THANK YOU PAGE-->
          <section id="home-section" class="flex justify-center hidden">
             <div

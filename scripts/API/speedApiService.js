@@ -9,37 +9,42 @@ const $google1 = document.getElementById("google1"),
    $inactive = document.getElementById("inactive"),
    $firstSignificant = document.getElementById("first-s"),
    $firstCPU = document.getElementById("first-cpu"),
-   $latency = document.getElementById("latency"),
-   $iframe = document.getElementById("preview"),
-   $pageTested = document.getElementById("page-tested"),
-   $pageTested2 = document.getElementById("page-tested-2"),
-   $pageTested3 = document.getElementById("page-tested-3"),
-   inputElement = document.getElementById("user-url");
+   $latency = document.getElementById("latency");
 
-async function getInputValue() {
-   const inputValue = inputElement.value;
+async function getInputValue(url) {
+   console.log(url, "URL");
+   pageTested.textContent = url;
+   $pageTested2.textContent = url;
 
-   $pageTested.textContent = inputValue;
-   $pageTested2.textContent = inputValue;
-
-   console.log(inputValue);
-   await getGoogleResults(inputValue);
+   console.log(url, "URL");
 }
 
-function getRandomValue() {
-   return (Math.random() * 3).toFixed(1) + "s";
+async function getApiResults(url) {
+   try {
+      const data = await fetchData(url);
+      resultsReplacement(data);
+      return data;
+   } catch (error) {
+      notify.error(
+         "Ha ocurrido un error al evaluar la página, por favor intente más tarde",
+         3000
+      );
+      throw new Error();
+   }
 }
 
-function getRandomCategory() {
-   const categories = ["MEJORABLE", "MALO", "REGULAR"];
-   return categories[Math.floor(Math.random() * categories.length)];
-}
-
-async function getGoogleResults(url) {
+async function fetchData(url) {
    const ENDPOINT = `${GOOGLE_ENDPOINT}${url}`;
-   const response = await fetch(ENDPOINT);
-   const data = await response.json();
+   try {
+      const response = await fetch(ENDPOINT);
+      const data = await response.json();
+      return data;
+   } catch (error) {
+      return error;
+   }
+}
 
+function resultsReplacement(data) {
    $firstRender.innerText = getRandomCategory();
    $firstInteraction.innerText = getRandomCategory();
    $speed.innerText =
@@ -57,7 +62,13 @@ async function getGoogleResults(url) {
    $firstCPU.innerText =
       data.lighthouseResult.audits["largest-contentful-paint"]?.displayValue ||
       getRandomValue();
-   $iframe.src = inputElement.value;
-   console.warn(data);
-   console.log(data.lighthouseResult.audits);
+}
+
+function getRandomCategory() {
+   const categories = ["MEJORABLE", "MALO", "REGULAR"];
+   return categories[Math.floor(Math.random() * categories.length)];
+}
+
+function getRandomValue() {
+   return (Math.random() * 3).toFixed(1) + "s";
 }
