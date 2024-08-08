@@ -26,21 +26,18 @@ function validateForm(formulario) {
       ) {
          isValid = false;
          input.classList.add("error");
-         notify.warning("The name must be between 3 and 50 characters", 3000);
+         notify.warning("Ingrese un nombre válido", 3000);
       } else if (
          input.name === "lastname" &&
-         (input.value.length < 8 || input.value.length > 90)
+         (input.value.length < 3 || input.value.length > 90)
       ) {
          isValid = false;
          input.classList.add("error");
-         notify.warning(
-            "The last names must be between 8 and 90 characters",
-            3000
-         );
+         notify.warning("Ingrese un apellido válido", 3000);
       } else if (input.type === "textarea" && input.value.length < 10) {
          isValid = false;
          input.classList.add("error");
-         notify.warning("The description must be at least 10 characters", 3000);
+         notify.warning("El mensaje debe tener al menos 10 caracteres", 3000);
       } else if (input.name === "phone" && !isValidPhone(input.value)) {
          isValid = false;
          input.classList.add("error");

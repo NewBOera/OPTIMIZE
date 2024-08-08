@@ -6,3 +6,9 @@ function validateLink(idForm) {
 
    if (!isValidEmail) return;
 }
+
+function validateContactForm(idForm) {
+   const $contactForm = document.getElementById(idForm);
+
+   validateForm($contactForm);
+}

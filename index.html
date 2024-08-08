@@ -81,7 +81,12 @@
          class="bg-[#405DF8] h-[40px] justify-center hidden lg:flex items-center p-8"
       >
          <div class="flex justify-center gap-3">
-            <img src="images/Group 5.png" class="w-[50px]" alt="logo" />
+            <img
+               src="images/Group 5.png"
+               class="w-[50px]"
+               alt="logo"
+               onclick="openTab(event, 'home-section')"
+            />
             <h2 class="font-bold text-white text-2xl">
                <span class="dyn-domain"></span>
             </h2>
@@ -104,7 +109,12 @@
                   <div
                      class="flex flex-col items-center justify-center gap-3 md:flex-row lg:hidden"
                   >
-                     <img src="images/Group 6.png" class="w-[100px]" alt="" />
+                     <img
+                        src="images/Group 6.png"
+                        class="w-[100px]"
+                        alt=""
+                        onclick="openTab(event, 'home-section')"
+                     />
                      <h2 class="font-bold text-xl md:text-3xl">
                         <span class="dyn-name"></span>
                      </h2>
@@ -116,11 +126,8 @@
                         class="flex flex-col lg:flex-row lg:gap-5 items-center"
                      >
                         <div class="hidden lg:flex justify-center items-center">
-                           <img
-                              src="images/Group 6.png"
-                              class="w-[150px] lg:shrink-0 lg:w-[150px]"
-                              alt=""
-                           />
+                           <img src="images/Group 6.png"" class="w-[150px]
+                           lg:shrink-0 lg:w-[150px]" alt="" />
                         </div>
 
                         <div class="md:w-[80%] lg:w-[90%] flex flex-col">
@@ -159,9 +166,7 @@
                         </button>
                      </form>
                   </div>
-                  <div
-                     class="flex flex-col items-center bg-blue-200 w-full gap-4"
-                  >
+                  <div class="flex flex-col items-center w-full gap-4">
                      <video
                         width="auto"
                         height="auto"
@@ -234,7 +239,7 @@
                </div>
             </article>
             <!--?ELLOS REALIZARON-->
-            <article id="home-section" class="flex flex-col items-center">
+            <article id="ellos-section" class="flex flex-col items-center">
                <div
                   class="flex flex-col items-center gap-5 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1300px] lg:gap-14"
                >
@@ -274,6 +279,68 @@
                         alt=""
                      />
                   </div>
+               </div>
+            </article>
+
+            <!--?FORM SECTION-->
+            <article id="form-section" class="flex flex-col items-center pt-14">
+               <div
+                  class="flex flex-col items-center gap-10 sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:[1300px]"
+               >
+                  <h2
+                     class="font-bold text-2xl text-center md:text-4xl md:font-semibold lg:text-[40px] uppercase"
+                  >
+                     ¿Tienes alguna duda sobre nuestros servicios?
+                  </h2>
+
+                  <h3 class="lg:text-2xl">
+                     Contáctanos fácilmente a través de este formulario
+                  </h3>
+                  <form
+                     id="contact-form"
+                     action=""
+                     class="flex flex-col justify-between gap-3 md:w-1/2 font-DM md:[&>div]:text-base lg:[&>div]:text-lg lg:w-[70%] bg-white p-5"
+                  >
+                     <div
+                        class="flex gap-2 border rounded-[15px] text-sm font-DM p-2 border-[#405Df8]"
+                     >
+                        <label for="name">Nombre:</label>
+                        <input
+                           type="text"
+                           name="name"
+                           placeholder="Ingresa tu nombre"
+                           id=""
+                           class="grow"
+                        />
+                     </div>
+
+                     <div
+                        class="flex gap-2 border rounded-[15px] text-sm font-DM p-2 border-[#405Df8]"
+                     >
+                        <label for="lastname">Apellido:</label>
+                        <input
+                           type="text"
+                           name="lastname"
+                           placeholder="Ingresa tu apellido"
+                           class="grow"
+                           id=""
+                        />
+                     </div>
+
+                     <textarea
+                        placeholder="Ingresa tu mensaje"
+                        name=""
+                        id=""
+                        class="border-[#405Df8] text-lg border min-h-[120px] p-2 rounded-[15px] resize-none"
+                     ></textarea>
+
+                     <a
+                        onclick="validateContactForm('contact-form')"
+                        class="bg-[#405Df8] cursor-pointer md:text-[20px]/[24px] lg:text-2xl text-white text-center font-bold rounded-[15px] font-DM p-1"
+                     >
+                        ENVIAR
+                     </a>
+                  </form>
                </div>
             </article>
          </section>
@@ -823,17 +890,22 @@
                   <span
                      class="cursor-pointer"
                      onclick="clickModal('privacy-modal')"
-                     >Políticas de privacidad</span
+                     >Declaración de Privacidad</span
                   >
                   <span
                      class="cursor-pointer"
-                     onclick="clickModal('info-modal')"
-                     >Información de la compañia</span
+                     onclick="clickModal('cookies-modal')"
+                     >Política de Cookies</span
+                  >
+                  <span
+                     class="cursor-pointer"
+                     onclick="clickModal('refund-modal')"
+                     >Política de Reembolso</span
                   >
                   <span
                      class="cursor-pointer"
                      onclick="clickModal('disclaimer-modal')"
-                     >Disclaimer</span
+                     >Descargo de Responsabilidad</span
                   >
                </div>
             </div>
@@ -871,66 +943,148 @@
                <article
                   class="overflow-y-auto overflow-x-hidden bg-white h-96 p-5 text-xs flex flex-col gap-4"
                >
-                  <h3 class="font-semibold text-lg">Términos y Condiciones.</h3>
+                  <h3 class="font-semibold text-lg">
+                     Bienvenida y aceptación de los términos
+                  </h3>
                   <p class="text-sm">
-                     Al acceder y utilizar este sitio, aceptas cumplir con estos
-                     términos y condiciones en su totalidad.
+                     Bienvenido al sitio web de {CHANGE NAME}, alojado en
+                     {CHANGE DOMAIN}. Al acceder y utilizar nuestro sitio web,
+                     aceptas y te comprometes a cumplir con las presentes
+                     condiciones de uso. Si no estás de acuerdo con alguna parte
+                     de estos términos, te recomendamos que no utilices nuestro
+                     sitio
                   </p>
-                  <h3 class="font-semibold text-lg">1. Uso del Sitio Web</h3>
+                  <h3 class="font-semibold text-lg">
+                     Uso autorizado del sitio
+                  </h3>
                   <p class="text-sm">
-                     El contenido de las páginas de este sitio web es únicamente
-                     referencial, incluye opiniones que pueden no ser
-                     necesariamente las mismas que la de los usuarios.
+                     {CHANGE NAME} ofrece una herramienta gratuita de auditoría
+                     de sitios web para ayudarte a mejorar y optimizar tu sitio.
                   </p>
 
-                  <h3 class="font-semibold text-lg">2. Enlaces Afiliados</h3>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Acceso Global</span>Nuestro
+                        servicio está disponible internacionalmente desde México
+                        y puede ser utilizado por cualquier persona con acceso a
+                        internet.
+                     </li>
+                     <li>
+                        <span class="font-bold">Resultados Orientativos</span>
+                        Los resultados proporcionados por nuestra auditoría son
+                        únicamente informativos y no garantizamos resultados
+                        específicos en términos de aumento de ventas, tráfico o
+                        conversiones.
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">Prohibiciones de uso</h3>
                   <p class="text-sm">
-                     Este sitio web puede incluir enlaces a productos o
-                     servicios de terceros a través de enlaces de afiliados.
-                     Estos enlaces son proporcionados directamente por las
-                     marcas/sitios involucrados. No vendemos directamente ningún
-                     producto o servicio a través de nuestro sitio web. Si
-                     decides realizar una compra a través de estos enlaces,
-                     serás dirigido al sitio web del vendedor y se aplicarán sus
-                     términos y condiciones.
+                     Al utilizar nuestro sitio, te comprometes a
+                  </p>
+
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        No causar daño, interrupción o deterioro del sitio web o
+                        su acceso
+                     </li>
+                     <li>
+                        No emplear el sitio para actividades ilegales,
+                        fraudulentas o dañinas.
+                     </li>
+                     <li>
+                        No intentar obtener acceso no autorizado a nuestro
+                        sitio, servidores, sistemas informáticos o bases de
+                        datos conectadas a nuestro sitio.
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">
+                     Derechos de Propiedad Intelectual
+                  </h3>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold">
+                           Propiedad del Contenido:
+                        </span>
+                        Salvo indicación en contrario, {CHANGE NAME} y sus
+                        licenciantes poseen todos los derechos de propiedad
+                        intelectual sobre el material contenido en {CHANGE
+                        DOMAIN}. Todos estos derechos están protegidos y
+                        reservados.
+                     </li>
+                     <li>
+                        <span class="font-bold">Restricciones de Uso:</span>
+                        Puedes utilizar el contenido de {CHANGE DOMAIN} para
+                        fines personales, siempre que no:
+
+                        <br />
+                        Publiques, vendas, alquiles o sublicencies el material
+                        de {CHANGE DOMAIN}. <br />
+                        <br />
+                        Reproduzcas, dupliques o copies el material de {CHANGE
+                        DOMAIN} <br />
+                        Redistribuyas el contenido de {CHANGE NAME} sin
+                        autorización escrita previa.
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">
+                     Enlaces a Sitios de Terceros
+                  </h3>
+                  <p class="text-sm">
+                     Nuestro sitio puede contener enlaces a sitios web de
+                     terceros que no son operados por nosotros. No tenemos
+                     control sobre el contenido, políticas de privacidad o
+                     prácticas de estos sitios externos y no asumimos
+                     responsabilidad alguna por ellos. Modificaciones de las
+                     Condiciones
                   </p>
 
                   <h3 class="font-semibold text-lg">
-                     3. Propiedad Intelectual
+                     Modificaciones de las Condiciones
                   </h3>
                   <p class="text-sm">
-                     El contenido, diseño y gráficos de este sitio web están
-                     protegidos por derechos de autor y otras leyes de propiedad
-                     intelectual. Queda prohibida la reproducción total o
-                     parcial del contenido, salvo acuerdo expreso por escrito de
-                     los propietarios del sitio.
+                     {CHANGE NAME} se reserva el derecho de modificar estos
+                     términos y condiciones en cualquier momento. Es tu
+                     responsabilidad revisar periódicamente estas condiciones.
+                     Las modificaciones entrarán en vigor inmediatamente después
+                     de su publicación en esta página.
                   </p>
-
                   <h3 class="font-semibold text-lg">
-                     4. Limitación de Responsabilidad
+                     Limitación de Responsabilidad
+                  </h3>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Exclusión de Daños:</span> En
+                        la máxima medida permitida por la ley aplicable, {CHANGE
+                        NAME} no será responsable de ninguna pérdida o daño de
+                        cualquier tipo relacionado con el uso del sitio web.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Disponibilidad del servicio:</span
+                        >
+                        No garantizamos que el sitio web esté disponible en todo
+                        momento o que el contenido sea siempre completo y
+                        exacto.
+                     </li>
+                  </ul>
+                  <h3 class="font-semibold text-lg">
+                     Ley Aplicable y Jurisdicción
                   </h3>
                   <p class="text-sm">
-                     <span class="dyn-name"></span> no se hace responsable de
-                     ninguna pérdida o daño directo, indirecto, incidental,
-                     especial, consecuente o ejemplar que surja del uso o la
-                     imposibilidad de uso de este sitio web o de cualquier
-                     información o servicio proporcionado a través de este sitio
-                     web.
+                     Estas condiciones se regirán e interpretarán de acuerdo con
+                     las leyes de México. Cualquier disputa relacionada con
+                     estas condiciones será competencia exclusiva de los
+                     tribunales de México
                   </p>
 
-                  <h3 class="font-semibold text-lg">5. Modificaciones</h3>
-                  <p class="text-sm">
-                     <span class="dyn-name"></span> se reserva el derecho de
-                     modificar estos términos y condiciones en cualquier
-                     momento. Los cambios entrarán en vigencia desde el momento
-                     de su publicación en este sitio web.
-                  </p>
                   <h3 class="font-semibold text-lg">Contacto</h3>
+
                   <p class="text-sm">
-                     Si tienes alguna pregunta sobre estos términos y
-                     condiciones, por favor contáctanos a través de correo@<span
-                        class="dyn-name"
-                     ></span>
+                     Para cualquier pregunta sobre estas Condiciones de Uso, por
+                     favor, contáctanos en info@{CHANGE DOMAIN}
                   </p>
                </article>
             </div>
@@ -959,7 +1113,7 @@
                      <h2
                         class="text-base text-center p-4 font-bold text-white w-full"
                      >
-                        Política de Privacidad
+                        Declaración de Privacidad
                      </h2>
                   </div>
                </div>
@@ -967,91 +1121,191 @@
                <article
                   class="overflow-y-auto overflow-x-hidden bg-white h-96 p-5 text-xs flex flex-col gap-4"
                >
-                  <h3 class="font-semibold text-lg">Introducción</h3>
-                  <p class="text-sm">
-                     En <span class="dyn-name"></span>, respetamos y protegemos
-                     la privacidad de nuestros usuarios. Esta Política de
-                     Privacidad establece los términos en que
-                     <span class="dyn-name"></span> utiliza y protege la
-                     información que es proporcionada por sus usuarios al
-                     momento de utilizar nuestro sitio web. Nuestra empresa está
-                     comprometida con la seguridad de los datos de sus usuarios.
-                     Cuando le solicitamos llenar los campos de información
-                     personal con los cuales usted pueda ser identificado, lo
-                     hacemos asegurando que solo se empleará de acuerdo con los
-                     términos de este documento.
-                  </p>
                   <h3 class="font-semibold text-lg">
-                     1. Información que Recopilamos
+                     Compromiso con la Privacidad
                   </h3>
                   <p class="text-sm">
-                     La única información personal que recopilamos de manera
-                     voluntaria es su dirección de correo electrónico cuando se
-                     suscribe a nuestro boletín informativo (newsletter).
+                     En {CHANGE NAME}, accesible a través de {CHANGE DOMAIN}, la
+                     protección de la privacidad de nuestros usuarios es de suma
+                     importancia. Esta Declaración de Privacidad explica los
+                     tipos de datos que recopilamos, cómo los procesamos y las
+                     medidas que tomamos para proteger tu información.
                   </p>
+                  <h3 class="font-semibold text-lg">
+                     Tipos de Información Recopilada
+                  </h3>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Datos Personales: </span>
+                        Incluyen información que puede identificarte
+                        personalmente, como tu nombre, dirección de correo
+                        electrónico, dirección IP y cualquier otra información
+                        que decidas proporcionarnos.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Datos de Uso:</span>
+                        Información sobre cómo utilizas nuestro sitio web,
+                        incluyendo tipo de navegador, idioma del navegador,
+                        páginas visitadas, tiempo en cada página, y otra
+                        información técnica.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Información de Dispositivos:</span
+                        >
+                        Detalles sobre el dispositivo que usas para acceder a
+                        nuestro sitio, incluyendo modelo del dispositivo,
+                        sistema operativo y otros identificadores únicos del
+                        dispositivo.
+                     </li>
+                  </ul>
 
                   <h3 class="font-semibold text-lg">
-                     2. Uso de la Información
+                     Finalidades del Tratamiento de Datos
                   </h3>
-                  <p class="text-sm">
-                     Usamos su dirección de correo electrónico exclusivamente
-                     para enviarle nuestro boletín informativo, que puede
-                     incluir actualizaciones sobre nuevos artículos,
-                     recomendaciones de herramientas, promociones y otra
-                     información relevante para nuestros lectores.
-                  </p>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Operación del Servicio:</span>
+                        Utilizamos tus datos para operar y mantener nuestro
+                        sitio web, asegurando su correcto funcionamiento.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Personalización y Mejora:</span
+                        >
+                        Analizamos los datos para mejorar y personalizar tu
+                        experiencia, adaptando el contenido y las
+                        funcionalidades del sitio a tus preferencias.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Desarrollo de Nuevas Funcionalidades:
+                        </span>
+                        Utilizamos los datos para investigar y desarrollar
+                        nuevas características y servicios que puedan
+                        interesarte.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Comunicaciones y Actualizaciones:</span
+                        >
+                        Te enviaremos notificaciones sobre actualizaciones,
+                        cambios en nuestros servicios y otras comunicaciones
+                        relevantes, directamente o a través de nuestros socios
+                     </li>
+                  </ul>
 
                   <h3 class="font-semibold text-lg">
-                     3. Protección de la Información
+                     Uso de Cookies y Tecnologías Similares
                   </h3>
-                  <p class="text-sm">
-                     <span class="dyn-name"></span> garantiza la seguridad
-                     absoluta de su información personal. Utilizamos medidas de
-                     seguridad adecuadas para proteger su dirección de correo
-                     electrónico contra el acceso no autorizado, la divulgación
-                     o la destrucción.
-                  </p>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Cookies de Navegación:</span>
+                        Utilizamos cookies para almacenar tus preferencias y
+                        mejorar tu experiencia de navegación. Nos ayudan a
+                        recordar tus visitas anteriores y mantenerte conectado
+                        durante tu sesión.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Cookies Analíticas: </span>
+                        Empleamos cookies de análisis para recopilar datos sobre
+                        tu interacción con nuestro sitio, permitiéndonos
+                        entender mejor cómo lo utilizas y dónde podemos realizar
+                        mejoras.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Gestión de Cookies: </span>
+                        Puedes configurar tu navegador para rechazar cookies o
+                        para que te avise cuando se envían cookies. Sin embargo,
+                        algunas partes de nuestro sitio web podrían no funcionar
+                        correctamente sin cookies.
+                     </li>
+                  </ul>
 
                   <h3 class="font-semibold text-lg">
-                     4. Compartir la Información
+                     Seguridad de la Información
                   </h3>
-                  <p class="text-sm">
-                     Nos comprometemos a no vender, distribuir o ceder su
-                     información personal a terceros sin su consentimiento,
-                     salvo que sea requerido por un juez con una orden judicial.
-                  </p>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Medidas de Seguridad: </span>
+                        Implementamos diversas medidas para proteger tu
+                        información personal contra accesos no autorizados,
+                        alteraciones, divulgaciones o destrucciones, incluyendo
+                        tecnología de cifrado y otras prácticas de seguridad
+                        avanzadas.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Limitaciones de Seguridad:
+                        </span>
+                        A pesar de nuestros esfuerzos, ningún método de
+                        transmisión por internet o almacenamiento electrónico es
+                        completamente seguro. No podemos garantizar la seguridad
+                        absoluta de tus datos.
+                     </li>
+                  </ul>
 
-                  <h3 class="font-semibold text-lg">5. Derechos del Usuario</h3>
-                  <p class="text-sm">
-                     Usted tiene el derecho de acceder, rectificar, cancelar u
-                     oponerse al uso de su información personal. Para cancelar
-                     su suscripción al boletín informativo, simplemente haga
-                     clic en el enlace de "cancelar suscripción" que se incluye
-                     en cada uno de los correos electrónicos que enviamos.
-                  </p>
+                  <h3 class="font-semibold text-lg">Derechos del Usuario</h3>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold">
+                           Acceso y Corrección de Datos:
+                        </span>
+                        Tienes derecho a acceder a los datos personales que
+                        poseemos sobre ti y solicitar la corrección de cualquier
+                        información incorrecta o desactualizada.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Eliminación de Datos: </span>
+                        Puedes solicitar la eliminación de tus datos personales
+                        en cualquier momento. Atenderemos tu solicitud conforme
+                        a las leyes y regulaciones aplicables.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Derechos Adicionales: </span>
+                        Según la jurisdicción, puedes tener derechos adicionales
+                        como la portabilidad de datos y la limitación del
+                        tratamiento de tus datos personales.
+                     </li>
+                  </ul>
                   <h3 class="font-semibold text-lg">
-                     6. Cambios en la Política de Privacidad
+                     Actualizaciones a Esta Declaración de Privacidad
                   </h3>
-                  <p class="text-sm">
-                     Si <span class="dyn-name"></span> decide modificar esta
-                     política de privacidad, se notificará a través de un aviso
-                     en nuestro sitio web y mediante correo electrónico a
-                     correo@[nombre_dinámico].
-                  </p>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold">
+                           Modificaciones y Notificaciones:
+                        </span>
+                        Nos reservamos el derecho de actualizar esta Declaración
+                        de Privacidad en cualquier momento. Te notificaremos
+                        sobre cualquier cambio significativo publicando la nueva
+                        declaración en esta página y, cuando sea necesario,
+                        mediante una notificación en el sitio.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Revisión Periódica: </span>
+                        Te recomendamos revisar esta Declaración de Privacidad
+                        periódicamente para estar informado sobre cómo
+                        protegemos tu información.
+                     </li>
+                  </ul>
                   <h3 class="font-semibold text-lg">Contacto</h3>
                   <p class="text-sm">
-                     Si tiene alguna pregunta o inquietud acerca de nuestra
-                     política de privacidad, no dude en contactarnos a través de
-                     correo@<span class="dyn-name"></span>.
+                     <span class="font-bold">Consultas y Solicitudes: </span> Si
+                     tienes alguna pregunta, duda o solicitud relacionada con
+                     nuestra Declaración de Privacidad, contáctanos a través de
+                     info@{CHANGE DOMAIN}. Estamos aquí para ayudarte y
+                     asegurarnos de que tu experiencia con {CHANGE NAME} sea
+                     segura y satisfactoria
                   </p>
                </article>
             </div>
          </div>
       </section>
 
-      <!-- ? info Modal -->
+      <!-- ? cookies Modal -->
       <section
-         id="terms-modal"
+         id="cookies-modal"
          class="bg-[#00000088] font-Montserrat flex items-center justify-center min-h-screen absolute z-50 hidden"
       >
          <div
@@ -1063,7 +1317,7 @@
                <div class="relative flex items-end">
                   <img
                      class="hover:cursor-pointer absolute top-0 right-0 w-7 m-4 rounded-xs"
-                     onclick="clickModal('terms-modal')"
+                     onclick="clickModal('cookies-modal')"
                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRUZFRkVGIiBkPSJNMTkgM0g1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMm0tMy40IDE0TDEyIDEzLjRMOC40IDE3TDcgMTUuNmwzLjYtMy42TDcgOC40TDguNCA3bDMuNiAzLjZMMTUuNiA3TDE3IDguNEwxMy40IDEybDMuNiAzLjZ6Ii8+PC9zdmc+"
                      alt=""
                   />
@@ -1071,7 +1325,7 @@
                      <h2
                         class="text-base text-center p-4 font-bold text-white w-full"
                      >
-                        Terminos y condiciones
+                        Política de Cookies
                      </h2>
                   </div>
                </div>
@@ -1079,72 +1333,194 @@
                <article
                   class="overflow-y-auto overflow-x-hidden bg-white h-96 p-5 text-xs flex flex-col gap-4"
                >
-                  <h3 class="font-semibold text-lg">Términos y Condiciones.</h3>
-                  <p class="text-sm">
-                     Al acceder y utilizar este sitio, aceptas cumplir con estos
-                     términos y condiciones en su totalidad.
-                  </p>
-                  <h3 class="font-semibold text-lg">1. Uso del Sitio Web</h3>
-                  <p class="text-sm">
-                     El contenido de las páginas de este sitio web es únicamente
-                     referencial, incluye opiniones que pueden no ser
-                     necesariamente las mismas que la de los usuarios.
-                  </p>
-
-                  <h3 class="font-semibold text-lg">2. Enlaces Afiliados</h3>
-                  <p class="text-sm">
-                     Este sitio web puede incluir enlaces a productos o
-                     servicios de terceros a través de enlaces de afiliados.
-                     Estos enlaces son proporcionados directamente por las
-                     marcas/sitios involucrados. No vendemos directamente ningún
-                     producto o servicio a través de nuestro sitio web. Si
-                     decides realizar una compra a través de estos enlaces,
-                     serás dirigido al sitio web del vendedor y se aplicarán sus
-                     términos y condiciones.
-                  </p>
-
                   <h3 class="font-semibold text-lg">
-                     3. Propiedad Intelectual
+                     Uso de Cookies en {CHANGE NAME}
                   </h3>
                   <p class="text-sm">
-                     El contenido, diseño y gráficos de este sitio web están
-                     protegidos por derechos de autor y otras leyes de propiedad
-                     intelectual. Queda prohibida la reproducción total o
-                     parcial del contenido, salvo acuerdo expreso por escrito de
-                     los propietarios del sitio.
+                     Esta es la Política de Cookies de {CHANGE NAME}, accesible
+                     desde {CHANGE DOMAIN}. Explica qué son las cookies, cómo
+                     las utilizamos y cómo puedes gestionar tus preferencias.
+                  </p>
+                  <h3 class="font-semibold text-lg">¿Qué son las Cookies?</h3>
+                  <p class="text-sm">
+                     Las cookies son pequeños archivos que se descargan en tu
+                     computadora para mejorar tu experiencia de navegación. Como
+                     es práctica común en casi todos los sitios web
+                     profesionales, {CHANGE NAME} utiliza cookies.
                   </p>
 
-                  <h3 class="font-semibold text-lg">
-                     4. Limitación de Responsabilidad
-                  </h3>
+                  <h3 class="font-semibold text-lg">Cómo Usamos las Cookies</h3>
                   <p class="text-sm">
-                     <span class="dyn-name"></span> no se hace responsable de
-                     ninguna pérdida o daño directo, indirecto, incidental,
-                     especial, consecuente o ejemplar que surja del uso o la
-                     imposibilidad de uso de este sitio web o de cualquier
-                     información o servicio proporcionado a través de este sitio
-                     web.
+                     Utilizamos cookies por una variedad de razones, entre
+                     ellas:
+                  </p>
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Cookies de Navegación:</span>
+                        Para almacenar tus preferencias y mejorar tu experiencia
+                        de usuario.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Cookies de Análisis:</span>
+                        Para recopilar datos sobre tu interacción con nuestro
+                        sitio y ayudarnos a entender mejor cómo los usuarios lo
+                        utilizan.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Cookies de Funcionalidad:
+                        </span>
+                        Para recordar tus preferencias y configuraciones
+                        personales.
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">Gestión de Cookies</h3>
+                  <p class="text-sm">
+                     Puedes ajustar la configuración de tu navegador para
+                     rechazar cookies o para que te avise cuando se envían
+                     cookies. Sin embargo, deshabilitar cookies puede afectar la
+                     funcionalidad de nuestro sitio y de muchos otros sitios que
+                     visitas.
                   </p>
 
-                  <h3 class="font-semibold text-lg">5. Modificaciones</h3>
+                  <h3 class="font-semibold text-lg">Cookies que Utilizamos</h3>
+
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold">
+                           Cookies Relacionadas con Formularios:
+                        </span>
+                        Para recordar tus datos de usuario cuando envías
+                        información a través de formularios en nuestro sitio.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Cookies de Preferencias del Sitio:
+                        </span>
+                        Para recordar tus preferencias sobre cómo se ejecuta
+                        este sitio
+                     </li>
+                     <li>
+                        <span class="font-bold"> Cookies de Análisis: </span>
+                        Para entender cómo los usuarios interactúan con nuestro
+                        sitio y dónde podemos realizar mejoras.
+                     </li>
+                  </ul>
+                  <h3 class="font-semibold text-lg">Más Información</h3>
                   <p class="text-sm">
-                     <span class="dyn-name"></span> se reserva el derecho de
-                     modificar estos términos y condiciones en cualquier
-                     momento. Los cambios entrarán en vigencia desde el momento
-                     de su publicación en este sitio web.
-                  </p>
-                  <h3 class="font-semibold text-lg">Contacto</h3>
-                  <p class="text-sm">
-                     Si tienes alguna pregunta sobre estos términos y
-                     condiciones, por favor contáctanos a través de correo@<span
-                        class="dyn-name"
-                     ></span>
+                     Para más detalles sobre nuestras políticas de cookies, por
+                     favor, contáctanos en info@{CHANGE DOMAIN}.
                   </p>
                </article>
             </div>
          </div>
       </section>
-      <!-- ? Disclaimer Modal -->
+      <!-- ? Refund Modal -->
+      <section
+         id="refund-modal"
+         class="bg-[#00000088] font-Montserrat flex items-center justify-center min-h-screen absolute z-50 hidden"
+      >
+         <div
+            class="fixed inset-0 w-full bg-[#00000088] flex items-center justify-center max-h-screen"
+         >
+            <div
+               class="bg-white shadow-lg w-11/12 sm:w-8/12 lg:max-w-[600px] h-auto max-h-54 rounded-md"
+            >
+               <div class="relative flex items-end">
+                  <img
+                     class="hover:cursor-pointer absolute top-0 right-0 w-7 m-4 rounded-xs"
+                     onclick="clickModal('refund-modal')"
+                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRUZFRkVGIiBkPSJNMTkgM0g1YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0yVjVhMiAyIDAgMCAwLTItMm0tMy40IDE0TDEyIDEzLjRMOC40IDE3TDcgMTUuNmwzLjYtMy42TDcgOC40TDguNCA3bDMuNiAzLjZMMTUuNiA3TDE3IDguNEwxMy40IDEybDMuNiAzLjZ6Ii8+PC9zdmc+"
+                     alt=""
+                  />
+                  <div class="bg-[#405DF8] w-full">
+                     <h2
+                        class="text-base text-center p-4 font-bold text-white w-full"
+                     >
+                        Política de Reembolso
+                     </h2>
+                  </div>
+               </div>
+
+               <article
+                  class="overflow-y-auto overflow-x-hidden bg-white h-96 p-5 text-xs flex flex-col gap-4"
+               >
+                  <h3 class="font-semibold text-lg">
+                     Garantía de Satisfacción en {CHANGE NAME}
+                  </h3>
+                  <p class="text-sm">
+                     En {CHANGE NAME}, queremos que estés completamente
+                     satisfecho con nuestros servicios. Si no estás satisfecho
+                     por alguna razón, ofrecemos la siguiente política de
+                     reembolso.
+                  </p>
+
+                  <h3 class="font-semibold text-lg">
+                     Procedimiento para Solicitar un Reembolso
+                  </h3>
+
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Plazo de Solicitud</span>
+                        Contáctanos dentro de los 30 días posteriores a tu
+                        compra.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Documentación Necesaria:
+                        </span>
+                        Proporciona una descripción detallada del problema y
+                        cualquier evidencia relevante que respalde tu solicitud
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">
+                     Condiciones de Reembolso
+                  </h3>
+
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold">
+                           Verificación del Problema:</span
+                        >
+                        Los reembolsos se emitirán sólo si podemos verificar que
+                        el problema no se debe a un uso incorrecto o a
+                        malentendidos sobre el servicio proporcionado.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Servicios Utilizados: </span>
+                        Los servicios que han sido utilizados o accesados no
+                        serán elegibles para reembolso.
+                     </li>
+                  </ul>
+                  <h3 class="font-semibold text-lg">Proceso de Reembolso</h3>
+
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Aprobación y Plazo: </span>
+                        Una vez aprobada tu solicitud, procesaremos el reembolso
+                        dentro de los 7-10 días hábiles.
+                     </li>
+                     <li>
+                        <span class="font-bold"> Método de Reembolso: </span>
+                        El reembolso se realizará utilizando el mismo método de
+                        pago que utilizaste para la compra inicial.
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">Contacto</h3>
+
+                  <p class="text-sm">
+                     Para cualquier pregunta sobre nuestra Política de
+                     Reembolso, contáctanos en info@{CHANGE DOMAIN}.
+                  </p>
+               </article>
+            </div>
+         </div>
+      </section>
+
+      <!-- ? Refund Modal -->
       <section
          id="disclaimer-modal"
          class="bg-[#00000088] font-Montserrat flex items-center justify-center min-h-screen absolute z-50 hidden"
@@ -1166,7 +1542,7 @@
                      <h2
                         class="text-base text-center p-4 font-bold text-white w-full"
                      >
-                        Disclaimer
+                        Descargo de Responsabilidad
                      </h2>
                   </div>
                </div>
@@ -1174,35 +1550,104 @@
                <article
                   class="overflow-y-auto overflow-x-hidden bg-white h-96 p-5 text-xs flex flex-col gap-4"
                >
-                  <h3 class="font-semibold text-lg">Disclaimer</h3>
+                  <h3 class="font-semibold text-lg">
+                     Propósito de la Información
+                  </h3>
                   <p class="text-sm">
-                     La información y las recomendaciones proporcionadas en este
-                     sitio web tienen el propósito de ofrecer un reporte
-                     destinado a mejorar el rendimiento de su sitio web. Se
-                     proporcionan una cantidad limitada de recomendaciones sin
-                     costo alguno, y recomendaciones adicionales están
-                     disponibles mediante pago.
+                     La información proporcionada por {CHANGE NAME} en nuestro
+                     sitio web tiene como objetivo ofrecer información general.
+                     Aunque nos esforzamos por mantener la información precisa y
+                     actualizada, no hacemos ninguna declaración o garantía
+                     sobre su exactitud, adecuación, validez, fiabilidad,
+                     disponibilidad o integridad.
                   </p>
 
+                  <h3 class="font-semibold text-lg">Exención de Garantías</h3>
                   <p class="text-sm">
-                     Aunque nos comprometemos a ofrecer información precisa y
-                     útil, no garantizamos que la implementación de las
-                     recomendaciones contenidas en el reporte resulte en mejoras
-                     específicas en la velocidad o el rendimiento de su sitio
-                     web. Los resultados pueden estar sujetos a variaciones
-                     debido a factores fuera de nuestro control, tales como
-                     configuraciones del servidor, ajustes del sitio web y otros
-                     elementos técnicos.
+                     {CHANGE NAME} no garantiza, de manera expresa o implícita,
+                     que la información proporcionada en el sitio web sea
+                     siempre precisa, completa o actualizada. Es posible que el
+                     sitio contenga errores, omisiones o inexactitudes.
                   </p>
 
+                  <h3 class="font-semibold text-lg">
+                     Limitación de Responsabilidad
+                  </h3>
+
+                  <ul class="list-disc list-inside text-sm flex flex-col gap-2">
+                     <li>
+                        <span class="font-bold"> Daños y Pérdidas:</span>
+                        En ningún caso, {CHANGE NAME}, sus directores,
+                        empleados, socios, agentes, proveedores o afiliados
+                        serán responsables por cualquier pérdida o daño que
+                        surja del uso del sitio web o de la dependencia de
+                        cualquier información proporcionada en el sitio. Esto
+                        incluye daños directos, indirectos, incidentales,
+                        punitivos y consecuentes.
+                     </li>
+                     <li>
+                        <span class="font-bold">
+                           Disponibilidad del servicio:
+                        </span>
+                        No garantizamos que el sitio web estará disponible de
+                        manera continua o que el acceso será ininterrumpido.
+                        {CHANGE NAME} no será responsable por cualquier pérdida
+                        o daño que pueda resultar de dichas interrupciones.
+                     </li>
+                  </ul>
+
+                  <h3 class="font-semibold text-lg">Uso a Tu Propio Riesgo</h3>
                   <p class="text-sm">
-                     En consecuencia, no asumimos responsabilidad alguna por
-                     cualquier daño o pérdida que pueda surgir como resultado de
-                     la aplicación de nuestras recomendaciones. Al utilizar este
-                     sitio web, usted acepta que nuestra responsabilidad se
-                     limita únicamente a la información y recomendaciones
-                     proporcionadas en el reporte, y que no ofrecemos garantías
-                     sobre resultados específicos.
+                     El uso de cualquier información obtenida del sitio es bajo
+                     tu propio riesgo. Eres responsable de verificar la
+                     exactitud, integridad y utilidad de cualquier información
+                     antes de basarte en ella para cualquier propósito. {CHANGE
+                     NAME} no se responsabiliza por cualquier daño o perjuicio
+                     que resulte del uso o mal uso de la información
+                     proporcionada en el sitio web. Es tu responsabilidad
+                     evaluar la información y buscar asesoramiento profesional
+                     cuando sea necesario.
+                  </p>
+
+                  <h3 class="font-semibold text-lg">
+                     Exclusiones y Limitaciones
+                  </h3>
+                  <p class="text-sm">
+                     Las exclusiones y limitaciones de responsabilidad
+                     establecidas en este descargo de responsabilidad se aplican
+                     en la máxima medida permitida por la ley aplicable. Algunas
+                     jurisdicciones no permiten la exclusión de ciertas
+                     garantías o la limitación o exclusión de responsabilidad
+                     por daños incidentales o consecuentes. En tales
+                     jurisdicciones, nuestra responsabilidad se limitará en la
+                     medida máxima permitida por la ley
+                  </p>
+
+                  <h3 class="font-semibold text-lg">Enmiendas y Revisión</h3>
+                  <p class="text-sm">
+                     Nos reservamos el derecho de revisar, actualizar o
+                     modificar este descargo de responsabilidad en cualquier
+                     momento. Cualquier cambio se publicará en esta página, y se
+                     te recomienda revisar esta sección periódicamente para
+                     estar al tanto de cualquier modificación.
+                  </p>
+
+                  <h3 class="font-semibold text-lg">
+                     Ley Aplicable y Jurisdicción
+                  </h3>
+                  <p class="text-sm">
+                     Este descargo de responsabilidad se regirá e interpretará
+                     de acuerdo con las leyes de México. Cualquier disputa que
+                     surja en relación con este descargo de responsabilidad
+                     estará sujeta a la jurisdicción exclusiva de los tribunales
+                     de México.
+                  </p>
+                  <h3 class="font-semibold text-lg">Contacto</h3>
+                  <p class="text-sm">
+                     Si tienes alguna pregunta o inquietud sobre este descargo
+                     de responsabilidad, contáctanos en info@{CHANGE DOMAIN}.
+                     Estamos aquí para ayudarte y proporcionar cualquier
+                     aclaración que necesites.
                   </p>
                </article>
             </div>
